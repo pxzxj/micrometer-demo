@@ -1,5 +1,15 @@
+spring:
+  application:
+    name: mydemo
 management:
   endpoints:
     web:
       exposure:
         include: health,metrics,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      country: cn
+    export:
+      prometheus:
+        step: 15s    # 与scrape_interval保持一致
